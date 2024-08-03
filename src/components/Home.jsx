@@ -2,7 +2,7 @@ import React from "react";
 
 export const Home = () => {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 mt-12">
       <h2>Mos complete movie information search engine</h2>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis quos,
