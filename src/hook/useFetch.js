@@ -1,7 +1,7 @@
 import { data } from "autoprefixer";
 import { useEffect, useState } from "react";
 
-export const useFetch = () => {
+export const useFetch = (url) => {
   const [state, setState] = useState({
     data: null,
     isLoading: true,
@@ -11,17 +11,36 @@ export const useFetch = () => {
 
   useEffect(() => {
     getFetch();
-  }, []);
+  }, [url]);
 
   const getFetch = async () => {
-    const resp = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=naruto&api_key=fa8e38cf0b9f357169b6389692856535`
-    );
+    const resp = await fetch(url);
+
+    //sleep
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    if (!resp.ok) {
+      setState({
+        data: null,
+        isLoading: false,
+        hasError: true,
+        error: {
+          status: resp.status,
+          message: resp.statusText,
+        },
+      });
+      return;
+    }
 
     const data = await resp.json();
-
-    console.log({ data });
+    setState({
+      data: data,
+      isLoading: false,
+      hasError: false,
+      error: null,
+    });
   };
 
-  return {};
+  return {
+    ...state,
+  };
 };

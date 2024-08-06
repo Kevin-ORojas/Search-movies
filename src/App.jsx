@@ -3,7 +3,7 @@ import { Home } from "./components/Home";
 import { Navbar } from "./components/Navbar";
 
 function App() {
-  const [categories, setCategories] = useState(["Dead pool"]);
+  const [categories, setCategories] = useState("");
   const onAddNewCategory = (newCategory) => {
     // if (
     //   categories.find(
