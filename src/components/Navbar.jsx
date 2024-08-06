@@ -3,7 +3,7 @@ import { Search } from "./Search";
 import { Login } from "./Login";
 import { Register } from "./Register";
 
-export const Navbar = () => {
+export const Navbar = ({ onAddNewCategory }) => {
   return (
     <div className="flex items-center justify-between p-2 px-10 bg-white border-b-2">
       <div className="flex items-center gap-4 px-2">
@@ -11,7 +11,7 @@ export const Navbar = () => {
           S
         </p>
         <h2 className="font-semibold">Movies</h2>
-        <Search />
+        <Search onNewCategory={onAddNewCategory} />
       </div>
 
       <div className="flex gap-6 items-center">

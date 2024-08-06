@@ -1,6 +1,7 @@
-import React from "react";
+import { useFetch } from "../hook/useFetch";
 
-export const Home = () => {
+export const Home = ({ categories }) => {
+  useFetch();
   return (
     <div className="grid grid-cols-2 mt-12">
       <h2>Mos complete movie information search engine</h2>
@@ -24,6 +25,11 @@ export const Home = () => {
         error minus veritatis sed repellat ipsum, eum alias id optio cum? Aut,
         molestias? Tempore maiores facilis voluptatum ex.
       </p>
+      <ul>
+        {categories.map((category) => (
+          <li key={category}>{category}</li>
+        ))}
+      </ul>
     </div>
   );
 };
